@@ -1,0 +1,42 @@
+
+*{
+    font-family: 'Lucida Sans';
+}
+.home-intro{
+    background-color: #40C9FF;
+    height: 100%;
+    border-radius: 0px 25px 25px 0px;
+}
+.logo-home{
+    background-color: white;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap:break-word;
+    
+}
+.intro{
+    
+}
+.slogan{
+    font-size: larger;
+}
+.btn{
+    width: 75%;
+}
+.Study-Button{
+    background-color: #40C9FF;
+    color: black;
+    size: 200px;
+}
+.ToDoButton{
+    background-color: #FF71A3;
+    color: black;
+    size: 200px;
+}
+.Agenda-Button{
+    background-color: #40C9FF;
+    color: black;
+    size: 200px;
+}
