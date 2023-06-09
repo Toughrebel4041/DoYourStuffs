@@ -1,0 +1,47 @@
+* {
+    font-family: 'Lucida Sans';
+}
+
+.home-intro {
+    background-color: #40C9FF;
+    height: 15%;
+    border-radius: 0px 0px 50px 50px;
+}
+
+.navbar span {
+    padding: 20px 90px;
+    font-weight: 700;
+    font-size: large;
+}
+
+.input {
+    width: 500px;
+}
+
+.input2 {
+    width: 500px;
+    height: 100px;
+}
+
+.hehe {
+    width: 500px;
+    height: 200px;
+    resize: vertical;
+}
+
+.btn {
+    width: 75%;
+    font-weight: 500;
+}
+
+.PrintButton {
+    background-color: #FF71A3;
+    color: black;
+    size: 200px;
+}
+
+.Agenda-Button {
+    background-color: #40C9FF;
+    color: black;
+    size: 200px;
+}

@@ -1,0 +1,55 @@
+* {
+    font-family: 'Lucida Sans';
+}
+
+.home-intro {
+    background-color: #40C9FF;
+    height: 15%;
+    border-radius: 0px 0px 50px 50px;
+}
+
+.navbar span {
+    padding: 20px 90px;
+    font-weight: 700;
+    font-size: large;
+}
+
+h1{
+    text-align: center;
+}
+
+#satu{
+    background-color: #40C9FF;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap:break-word;
+    border-radius: 25px 25px 25px 25px;
+}
+
+#dua{
+    background-color: #FF71A3;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap:break-word;
+    border-radius: 25px 25px 25px 25px;
+}
+
+.btn {
+    width: 75%;
+}
+
+.PodomoroButton {
+    background-color: #FF71A3;
+    color: black;
+    size: 200px;
+}
+
+.SendiriButton {
+    background-color: #40C9FF;
+    color: black;
+    size: 200px;
+}
