@@ -46,10 +46,14 @@ h1{
     background-color: #FF71A3;
     color: black;
     size: 200px;
+    height: 300px;
+    width: 75%;
 }
 
 .SendiriButton {
     background-color: #40C9FF;
     color: black;
     size: 200px;
+    height: 300px;
+    width: 75%;
 }

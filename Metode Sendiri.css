@@ -1,0 +1,24 @@
+.home-intro {
+    background-color: #40C9FF;
+    height: 15%;
+    border-radius: 0px 0px 50px 50px;
+}
+h1{
+    text-align: center;
+}
+.navbar span {
+    padding: 20px 90px;
+    font-weight: 700;
+    font-size: large;
+}
+.ExecuteButton{
+    background-color: #FF71A3;
+    color: black;
+    display: inline-flex;
+    border: none;
+    padding: 15px 15px 15px 15px;
+    font-size: 15px;
+    border: #40C9FF;
+    border-radius: 30px;
+    border-style:solid;
+}

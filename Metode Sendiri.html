@@ -7,12 +7,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="Study Timer.css">
+    <link rel="stylesheet" href="Metode Sendiri.css">
+    <!-- ini harus dibenerin, karena stylingnya gabisa ke css, harus di html -->
     <script src="https://code.jquery.com/jquery-3.7.0.js"
         integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <title>Metode Sendiri</title>
 </head>
 <body>
-    hohoho
+    <div class="row vh-100">
+        <div class="home-intro container-fluid">
+            <div class="navbar">
+                <span><button style="background-color: #40C9FF; border-color: #40C9FF; border-style: none; font-weight: 700;" onclick="window.location.href = 'home.html';">Do Your Stuffs!</button></span>
+                <span>Study Timer</span>
+            </div>
+            <br><br>
+            <h1>Selamat datang di metode belajar manual.</h1>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col">
+                      <p>Pada metode belajar ini, kamu dipersilahkan untuk membangun metode dan durasi belajar mu sendiri.</p>
+                      <br>
+                      <br>
+                      <br>
+                      <div class="mb-3">
+                        <label for="study1" class="form-label">Waktu Belajar 1</label>
+                        <input type="number" class="form-control" id="study1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="break1" class="form-label">Waktu Istirahat 1</label>
+                        <input type="number" class="form-control" id="break1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="study2" class="form-label">Waktu Belajar 2</label>
+                        <input type="number" class="form-control" id="study2">
+                      </div>
+                      <div class="mb-3">
+                        <label for="break2" class="form-label">Waktu Istirahat 2</label>
+                        <input type="number" class="form-control" id="break2">
+                      </div>
+                      <br>
+                      <br>
+                      <button class="ExecuteButton">Tekan untuk mulai belajar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 </html>
