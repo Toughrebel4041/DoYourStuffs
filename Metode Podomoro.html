@@ -30,40 +30,73 @@
                       <br>
                       <h2 id="agenda">Waktu Belajar Tersisa</h2>
                       <br>
-                      <h2 id="countdown"></h2>
+                      <h2 id="timer"></h2>
                     </div>
+                    <button id="startButton">Mulai Belajar</button>
                 </div>
             </div>
         </div>
         <script>
-            // Set the date we're counting down to
-            var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
-            
-            // Update the count down every 1 second
-            var x = setInterval(function() {
-            
-              // Get today's date and time
-              var now = new Date().getTime();
-            
-              // Find the distance between now and the count down date
-              var distance = countDownDate - now;
-            
-              // Time calculations for days, hours, minutes and seconds
-              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-              // Display the result in the element with id="demo"
-              document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-              + minutes + "m " + seconds + "s ";
-            
-              // If the count down is finished, write some text
-              if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "EXPIRED";
-              }
-            }, 1000);
+            // Set the initial values
+let workTime = 25 * 60; // 25 minutes in seconds
+let breakTime = 5 * 60; // 5 minutes in seconds
+let sets = 4;
+let currentSet = 1;
+let isWorking = true; // Flag to track if it's work time or break time
+let timer;
+
+// Function to format the time in MM:SS format
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60).toString().padStart(2, '0');
+  const remainingSeconds = (seconds % 60).toString().padStart(2, '0');
+  return `${minutes}:${remainingSeconds}`;
+}
+
+// Function to update the timer display
+function updateDisplay(time) {
+  const timerDisplay = document.getElementById('timer');
+  timerDisplay.textContent = formatTime(time);
+}
+
+// Function to handle the timer countdown
+function countdown() {
+  if (isWorking && workTime > 0) {
+    workTime--;
+    updateDisplay(workTime);
+  } else if (!isWorking && breakTime > 0) {
+    breakTime--;
+    updateDisplay(breakTime);
+  } else {
+    // Switch between work time and break time
+    isWorking = !isWorking;
+
+    // Check if a set is completed
+    if (isWorking && currentSet === sets) {
+      clearInterval(timer);
+      updateDisplay(0);
+      alert('All sets completed!');
+      return;
+    }
+
+    // Reset the timer for the next interval
+    if (isWorking) {
+      workTime = 25 * 60; // 25 minutes in seconds
+      currentSet++;
+    } else {
+      breakTime = 5 * 60; // 5 minutes in seconds
+    }
+  }
+}
+
+// Function to start the timer
+function startTimer() {
+  timer = setInterval(countdown, 1000);
+}
+
+// Event listener for the start button
+const startButton = document.getElementById('startButton');
+startButton.addEventListener('click', startTimer);
+
             </script>
 </body>
 </html>
