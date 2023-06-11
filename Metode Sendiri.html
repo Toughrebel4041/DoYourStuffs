@@ -18,9 +18,9 @@
                 <span>Study Timer</span>
             </div>
             <br><br>
-            <h1>Selamat datang di metode belajar manual.</h1>
+            <h1 class="ucapanselamat">Selamat datang di metode belajar manual.</h1>
             <div class="container text-center">
-                <div class="row">
+                <div class="row inputuser">
                     <div class="col">
                       <p>Pada metode belajar ini, kamu dipersilahkan untuk membangun metode dan durasi belajar mu sendiri.</p>
                       <br>
@@ -47,9 +47,28 @@
                       <button class="ExecuteButton">Tekan untuk mulai belajar</button>
                     </div>
                 </div>
+                <div class="timer text-center">
+
+                </div>
             </div>
         </div>
         </div>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function() {
+        var countdown = "<div><p>Countdown will shown here</p></div>"
+        $('.ExecuteButton').click(function() {
+          alert("Mari mulai belajar!")
+
+          $('.inputuser').fadeOut()
+          $('.timer').append(countdown)
+          $('.ucapanselamat').text('Semangat belajarnya!!!')
+          var timebelajar1 = $('#study1').val()
+          var timebelajar2 = $('#study2').val()
+          var timebreak1 = $('#break1').val()
+          var timebreak2 = $('#break2').val()
+        })
+      })
+    </script>
   </body>
 </html>
