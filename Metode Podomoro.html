@@ -37,28 +37,28 @@
             </div>
         </div>
         <script>
-            // Set the initial values
-let workTime = 25 * 60; // 25 minutes in seconds
-let breakTime = 5 * 60; // 5 minutes in seconds
+            
+let workTime = 25 * 60;
+let breakTime = 5 * 60;
 let sets = 4;
 let currentSet = 1;
-let isWorking = true; // Flag to track if it's work time or break time
+let isWorking = true;
 let timer;
 
-// Function to format the time in MM:SS format
+//func untuk format waktu nya Minutes:Second
 function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60).toString().padStart(2, '0');
   const remainingSeconds = (seconds % 60).toString().padStart(2, '0');
   return `${minutes}:${remainingSeconds}`;
 }
 
-// Function to update the timer display
+//func untuk update display timernya
 function updateDisplay(time) {
   const timerDisplay = document.getElementById('timer');
   timerDisplay.textContent = formatTime(time);
 }
 
-// Function to handle the timer countdown
+//func countdown
 function countdown() {
   if (isWorking && workTime > 0) {
     workTime--;
@@ -67,10 +67,10 @@ function countdown() {
     breakTime--;
     updateDisplay(breakTime);
   } else {
-    // Switch between work time and break time
+    // nuker antara break dan study time
     isWorking = !isWorking;
 
-    // Check if a set is completed
+    // ngecek waktu
     if (isWorking && currentSet === sets) {
       clearInterval(timer);
       updateDisplay(0);
@@ -78,22 +78,22 @@ function countdown() {
       return;
     }
 
-    // Reset the timer for the next interval
+    // reset waktu buat next interval
     if (isWorking) {
-      workTime = 25 * 60; // 25 minutes in seconds
+      workTime = 25 * 60;
       currentSet++;
     } else {
-      breakTime = 5 * 60; // 5 minutes in seconds
+      breakTime = 5 * 60;
     }
   }
 }
 
-// Function to start the timer
+// func untuk start timer
 function startTimer() {
   timer = setInterval(countdown, 1000);
 }
 
-// Event listener for the start button
+// Event listener untuk start buttonnya
 const startButton = document.getElementById('startButton');
 startButton.addEventListener('click', startTimer);
 
