@@ -1,0 +1,9 @@
+#startButton{
+    position: relative;
+    background-color: #FF71A3;
+    width: 50%;
+    color: black; 
+    border-radius: 20px; 
+    border-style: double; 
+    border-color: #40C9FF;
+}
