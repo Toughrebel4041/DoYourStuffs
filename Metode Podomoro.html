@@ -29,7 +29,7 @@
                       <br>
                       <br>
                       <br>
-                      <h2 id="agenda">Waktu Belajar Tersisa</h2>
+                      <h2 id="agenda">Selamat Belajar</h2>
                       <br>
                       <h2 id="timer"></h2>
                     </div>
@@ -64,9 +64,11 @@ function countdown() {
   if (isWorking && workTime > 0) {
     workTime--;
     updateDisplay(workTime);
+    document.getElementById("agenda").innerHTML="Waktu Belajar Tersisa";
   } else if (!isWorking && breakTime > 0) {
     breakTime--;
     updateDisplay(breakTime);
+    document.getElementById("agenda").innerHTML="Waktu Istirahat Tersisa";
   } else {
     // nuker antara break dan study time
     isWorking = !isWorking;
@@ -75,7 +77,7 @@ function countdown() {
     if (isWorking && currentSet === sets) {
       clearInterval(timer);
       updateDisplay(0);
-      alert('All sets completed!');
+      alert('Set Belajar Selesai.');
       return;
     }
 
@@ -92,6 +94,7 @@ function countdown() {
 // func untuk start timer
 function startTimer() {
   timer = setInterval(countdown, 1000);
+  alert("Waktu Belajar dimulai, Selamat Belajar!");
 }
 
 // Event listener untuk start buttonnya
