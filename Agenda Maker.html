@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="Agenda Maker.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"
         integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script> 
+    <!-- script diatas buat print ke pdf berdasarkan element -->
     <title>Agenda Maker</title>
 </head>
 
@@ -41,10 +43,13 @@
                                 <button id="submit" class="Agenda-Button btn my-3">Submit</button>
                             </div>
                             <div class="col">
-                                <button id="printpdf" class="PrintButton btn my-3">Print To PDF</button>
+                                <button id="printpdf" class="PrintButton btn my-3" onclick="printpdf()">Print To PDF</button>
                             </div>
                           </div>
                     </div>
+                </div>
+                <div class="row pdf text-left" id="pdf">
+                    <!-- buat menampilkan preview yang mau di print ke pdf -->
                 </div>
             </div>
         </div>
@@ -60,8 +65,18 @@
                         'Deskripsi detail yang harus dilakukan : ' + userInput3;
 
                     $('#jawab').val(result);
+                    $('#pdf').html('<p>Dalam satu hari ini saya harus mengerjakan : </p>' + '<p>'+userInput1+'</p>' + '<br>' +
+                        '<p>Harus selesai sebelum atau pada saat tanggal : </p>' + '<p>'+userInput2+'</p>' + '<br>' +
+                        '<p>Deskripsi detail yang harus dilakukan : </p>' + '<p>'+userInput3+'</p>');
+
                 });
             });
+            function printpdf(){
+                const print = document.getElementById("pdf");
+                html2pdf()
+                .from(print)
+                .save();
+            }
         </script>
 </body>
 
