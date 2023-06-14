@@ -47,30 +47,62 @@
                       <button class="ExecuteButton">Tekan untuk mulai belajar</button>
                     </div>
                 </div>
-                <div class="timer text-center">
+                      <h2 id="agenda"></h2>
+                      <br>
+                      <h2 id="timer"></h2>
 
                 </div>
             </div>
         </div>
-        </div>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
-      $(document).ready(function() {
-        var timer = "<div><p>Countdown will shown here</p></div>"
+$(document).ready(function() {
         $('.ExecuteButton').click(function() {
-          var waktu = new Date()
-          var h = waktu.getHours();
-          var m = waktu.getMinutes();
-          var s = waktu.getSeconds();
-          alert("Mari mulai belajar!\nJam: " + h +"\nMenit: " + m)
-
+          var timebelajar1 = $('#study1').val() * 60
+          var timebelajar2 = $('#study2').val() * 60
+          var timebreak1 = $('#break1').val() * 60
+          var timebreak2 = $('#break2').val() * 60
           $('.inputuser').fadeOut()
-          $('.timer').append(timer)
           $('.ucapanselamat').text('Semangat belajarnya!!!')
-          var timebelajar1 = $('#study1').val()
-          var timebelajar2 = $('#study2').val()
-          var timebreak1 = $('#break1').val()
-          var timebreak2 = $('#break2').val()
+          
+          function thi(){
+            var menit, detik
+            if(timebelajar1 >= 0){
+              $('#agenda').text("Sesi Belajar 1").fadeIn
+              menit = Math.floor(timebelajar1/60)
+              detik = (timebelajar1--%60)
+
+              $('#timer').html("<div > Waktu tersisa: "+menit+":"+detik+" </div>").fadeIn
+            } else if (timebreak1 >= 0) {
+              $('#agenda').text("Istirahat")
+              menit = Math.floor(timebreak1/60)
+              detik = (timebreak1--%60)
+
+              $('#timer').html("<div > Waktu tersisa: "+menit+":"+detik+" </div>")
+            } else if (timebelajar2>=0){
+              $('#agenda').text("Sesi Belajar 2")
+              menit = Math.floor(timebelajar2/60)
+              detik = (timebelajar2--%60)
+
+              $('#timer').html("<div > Waktu tersisa: "+menit+":"+detik+" </div>")
+            } else if (timebreak2 >= 0) {
+              $('#agenda').text("Istirahat")
+              menit = Math.floor(timebreak2/60)
+              detik = (timebreak2--%60)
+              
+              $('#timer').html("<div > Waktu tersisa: "+menit+":"+detik+" </div>")
+            } else {
+              $('#timer').fadeOut(1000)
+              $('#agenda').text(" Sesi telah habis ")
+              // $('#timer').append('<button class="ExecuteButton" id="back"></button>') ini dia langsung kembali ke
+              // $('#back').click(window.location.href="Study Timer.html")               metode belajar setelah sesinya habis
+            }
+
+          }
+          function startTimer() {
+            setInterval(thi,1000);
+          }
+          startTimer()
         })
       })
     </script>
