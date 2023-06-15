@@ -9,11 +9,6 @@
 }
 .logo-home{
     background-color: #40C9FF;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
-    word-wrap:break-word;
     padding-right: 20%;
     padding-left: 20%;
 }
@@ -41,4 +36,11 @@
     background-color: #FF71A3;;
     color: black;
     size: 200px;
+}
+@media (max-width: 575.98px) {/*ukuran hp portrait*/
+    .home-intro{
+        background-color: #40C9FF;
+        height: auto;
+        border-radius: 0px 0px 0px 0px; /*cekungannya ilang*/
+    }
 }
