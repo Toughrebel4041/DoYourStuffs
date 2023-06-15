@@ -62,6 +62,12 @@ $(document).ready(function() {
           var timebelajar2 = $('#study2').val() * 60
           var timebreak1 = $('#break1').val() * 60
           var timebreak2 = $('#break2').val() * 60
+
+          if (!timebelajar1 || !timebelajar2 || !timebreak1 || !timebreak2) {
+            alert('Tolong lengkapi kolom yang kosong!');
+            return;
+          }
+
           $('.inputuser').fadeOut()
           $('.ucapanselamat').text('Semangat belajarnya!!!')
           

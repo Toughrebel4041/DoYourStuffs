@@ -59,15 +59,18 @@
 
         <script>
             $(document).ready(function () {
+                var isSubmitted = false;
                 var count = 1;
                 $("#submit").click(function () {
                     var userInput1 = $('#userInput1').val();
                     var userInput2 = $('#userInput2').val();
                     var userInput3 = $('#userInput3').val();
                     if (userInput1 === '' || userInput2 === '') {
-                        alert('Tolong lengkapi semua kolom yang kosong!');
+                        alert('Tolong lengkapi semua kolom yang kosonggg!');
                         return;
                     }
+
+                    isSubmitted = true;
 
                     // Tambahkan teks baru ke dalam textarea
                     var existingText = $('#jawab').val();
@@ -93,9 +96,15 @@
 
                     count++;
                 });
-            });
+            
 
-            function printpdf() {
+                function printpdf() {
+                    if (!isSubmitted) {
+                        // Jika tombol "Submit" belum diklik, munculkan alert
+                        alert("Tolong klik tombol 'Submit' terlebih dahulu!");
+                        return;
+                      }
+
                 const print = document.getElementById("pdf");
               
                 // Tambahkan judul "To Do List Saya" pada preview PDF
@@ -119,7 +128,12 @@
                   .from(element)
                   .toPdf()
                   .save();
-              }
+              };
+
+              $("#printpdf").click(function () {
+                printpdf();
+              });
+            });
 
         </script>
 </body>
