@@ -57,3 +57,10 @@ h1{
     height: 300px;
     width: 75%;
 }
+@media (max-width: 575.98px) {/*ukuran hp portrait*/
+    .navbar span{
+        padding: auto;
+        font-weight: 700;
+        font-size: large;
+    }
+}
