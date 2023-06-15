@@ -69,6 +69,11 @@
                         return;
                     }
 
+                    // Tambahkan teks baru ke dalam textarea
+                    var existingText = $('#jawab').val();
+                    var newText = existingText + '\n' + count + '. ' + userInput1 + '\n' + 'Harus selesai sebelum atau pada saat tanggal: ' + userInput2 + '\n' + 'Deskripsi detail yang harus dilakukan: ' + userInput3 + '\n';
+                    $('#jawab').val(newText);
+
                     // Buat elemen baru untuk menampilkan inputan pengguna
                     var newElement = $('<div></div>').addClass('output');
                     var taskText = $('<p></p>').text(count + '. ' + userInput1);
@@ -80,10 +85,6 @@
                     // Tambahkan elemen baru ke dalam div preview
                     $('#pdf').append(newElement);
 
-                    // Tambahkan teks baru ke dalam textarea
-                    var existingText = $('#jawab').val();
-                    var newText = existingText + '\n' + count + '. ' + userInput1 + '\n' + 'Harus selesai sebelum atau pada saat tanggal: ' + userInput2 + '\n' + 'Deskripsi detail yang harus dilakukan: ' + userInput3 + '\n';
-                    $('#jawab').val(newText);
 
                     // Reset nilai input setelah submit
                     $('#userInput1').val('');
@@ -96,16 +97,29 @@
 
             function printpdf() {
                 const print = document.getElementById("pdf");
-    
+              
                 // Tambahkan judul "To Do List Saya" pada preview PDF
                 const titleElement = document.createElement('h2');
                 titleElement.innerText = 'To Do List Saya';
                 print.insertBefore(titleElement, print.firstChild);
-    
+              
+                // Konfigurasi PDF
+                const opt = {
+                  margin: 10,
+                  filename: 'todolist.pdf',
+                  jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+              
+                // Ubah preview menjadi elemen HTML yang akan diubah menjadi PDF
+                const element = document.createElement('div');
+                element.appendChild(print.cloneNode(true));
+              
                 html2pdf()
-                    .from(print)
-                    .save();
-            }
+                  .set(opt)
+                  .from(element)
+                  .toPdf()
+                  .save();
+              }
 
         </script>
 </body>
