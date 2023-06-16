@@ -55,16 +55,48 @@
                       <br>
                       <h2 id="timer"></h2>
                 </div>
-                <div class="quote-container">
-                  <h2 class="quote"></h2>
-                  <h3 class="author"></h3>
+                <div class="quote-container container">
+                  <h2 class="quote text-center"></h2>
+                  <h3 class="author text-center"></h3>
                 </div>
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
-      var url="https://quote-generator-4dkkjzjz3q-et.a.run.app/quote";
+      var text
+      var author
+      const getNewQuote = async () =>
+        {
+            //api for quotes
+            var url="https://type.fit/api/quotes";    
+        
+            // fetch the data from api
+            const response=await fetch(url);
+            console.log(typeof response);
+            //convert response to json and store it in quotes array
+            const allQuotes = await response.json();
+        
+            // Generates a random number between 0 and the length of the quotes array
+            const indx = Math.floor(Math.random()*allQuotes.length);
+        
+            //Store the quote present at the randomly generated index
+            const quote=allQuotes[indx].text;
+
+            //Store the author of the respective quote
+            const auth=allQuotes[indx].author;
+        
+            if(auth==null)
+            {
+                auth = "Anonymous";
+            }
+          
+            //function to dynamically display the quote and the author
+            text = quote;
+            author = "~ "+auth;
+        }
+        getNewQuote();
+      // var url="https://quote-generator-4dkkjzjz3q-et.a.run.app/quote";
 $(document).ready(function() {
         $('.ExecuteButton').click(function() {
           var timebelajar1 = $('#study1').val() * 60
@@ -85,25 +117,25 @@ $(document).ready(function() {
               menit = Math.floor(timebelajar1/60)
               detik = (timebelajar1--%60)
 
-              $('#timer').html("<div > Waktu tersisa: "+menit+":"+detik+" </div>").fadeIn
+              $('#timer').html("<div > Waktu tersisa: "+ "<br>" +menit+":"+detik+" </div>").fadeIn
             } else if (timebreak1 >= 0) {
               $('#agenda').text("Istirahat")
               menit = Math.floor(timebreak1/60)
               detik = (timebreak1--%60)
 
-              $('#timer').html("<div > Waktu tersisa: "+menit+":"+detik+" </div>")
+              $('#timer').html("<div > Waktu tersisa: "+ "<br>" +menit+":"+detik+" </div>")
             } else if (timebelajar2>=0){
               $('#agenda').text("Sesi Belajar 2")
               menit = Math.floor(timebelajar2/60)
               detik = (timebelajar2--%60)
 
-              $('#timer').html("<div > Waktu tersisa: "+menit+":"+detik+" </div>")
+              $('#timer').html("<div > Waktu tersisa: "+ "<br>" +menit+":"+detik+" </div>")
             } else if (timebreak2 >= 0) {
               $('#agenda').text("Istirahat")
               menit = Math.floor(timebreak2/60)
               detik = (timebreak2--%60)
 
-              $('timer').html("<div> Waktu tersisa: " + menit + ":" + detik + "</div>")
+              $('timer').html("<div> Waktu tersisa: " + "<br>" +menit + ":" + detik + "</div>")
             } else if (timebelajar3>=0){
               $('#agenda').text("Sesi Belajar 3")
               menit = Math.floor(timebelajar3/60)
@@ -116,13 +148,10 @@ $(document).ready(function() {
 
               //showing quote after times out
               $('.content-container').empty();
-
-      $.get(url, function(data, status){
-        $('.quote').text(JSON.stringify(data.quote.message));
-        $('.author').text(JSON.stringify(data.quote.author));
-      })
-      alert('Set Belajar Selesai.');
+              alert('Set Belajar Selesai.');
               clearInterval(timer)
+              $('.quote').text(text)
+              $('.author').text(author)
               // $('#timer').append('<button class="ExecuteButton" id="back"></button>') ini dia langsung kembali ke
               // $('#back').click(window.location.href="Study Timer.html")               metode belajar setelah sesinya habis
             }

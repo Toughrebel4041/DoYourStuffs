@@ -37,13 +37,46 @@
                   <button id="startButton">Mulai Belajar</button>
             </div>
         </div>
-          <div class="quote-container">
-            <h2 id="quote"></h2>
-            <h3 id="author"></h3>
+          <div class="quote-container container">
+            <h2 id="quote" class="text-center"></h2>
+            <h3 id="author"class="text-center"></h3>
           </div>
     </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script>
+                var text
+                var author
+                const getNewQuote = async () =>
+                  {
+                      //api for quotes
+                      var url="https://type.fit/api/quotes";    
+                  
+                      // fetch the data from api
+                      const response=await fetch(url);
+                      console.log(typeof response);
+                      //convert response to json and store it in quotes array
+                      const allQuotes = await response.json();
+                  
+                      // Generates a random number between 0 and the length of the quotes array
+                      const indx = Math.floor(Math.random()*allQuotes.length);
+                  
+                      //Store the quote present at the randomly generated index
+                      const quote=allQuotes[indx].text;
+                  
+                      //Store the author of the respective quote
+                      const auth=allQuotes[indx].author;
+                  
+                      if(auth==null)
+                      {
+                          auth = "Anonymous";
+                      }
+                    
+                      //function to dynamically display the quote and the author
+                      text = quote;
+                      author = "~ "+auth;
+                  }
+                  getNewQuote();
+
 let workTime = 25 * 60;
 let breakTime = 5 * 60;
 let sets = 4;
@@ -86,13 +119,9 @@ function countdown() {
       
       $('.content-container').empty();
 
-      $.get(url, function(data, status){
-        $('quote').text(JSON.stringify(data.quote.message));
-        $('author').text(JSON.stringify(data.quote.author));
-      })
       alert('Set Belajar Selesai.');
-      alert('#quote')
-      
+      $('#quote').text(text)
+      $('#author').text(author)
       return;
     }
 
