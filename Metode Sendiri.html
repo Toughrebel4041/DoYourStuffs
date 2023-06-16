@@ -67,6 +67,7 @@ $(document).ready(function() {
           var timebelajar2 = $('#study2').val() * 60
           var timebreak1 = $('#break1').val() * 60
           var timebreak2 = $('#break2').val() * 60
+          var timer
 
           if (!timebelajar1 || !timebelajar2 || !timebreak1 || !timebreak2) {
             alert('Tolong lengkapi kolom yang kosong!');
@@ -74,7 +75,7 @@ $(document).ready(function() {
           }
 
           $('.inputuser').fadeOut()
-          $('.ucapanselamat').text('Semangat belajarnya!!!')
+          $('.ucapanselamat').empty()
           alert('Selamat Belajar!');
           
           function thi(){
@@ -109,20 +110,20 @@ $(document).ready(function() {
 
               //showing quote after times out
               $('.content-container').empty();
-              $('ucapanselamat').text('');
 
       $.get(url, function(data, status){
         $('quote').text(JSON.stringify(data.quote.message));
         $('author').text(JSON.stringify(data.quote.author));
       })
       alert('Set Belajar Selesai.');
+              clearInterval(timer)
               // $('#timer').append('<button class="ExecuteButton" id="back"></button>') ini dia langsung kembali ke
               // $('#back').click(window.location.href="Study Timer.html")               metode belajar setelah sesinya habis
             }
 
           }
           function startTimer() {
-            setInterval(thi,1000);
+            timer = setInterval(thi,1000);
           }
           startTimer()
         })
