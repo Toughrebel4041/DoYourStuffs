@@ -42,6 +42,10 @@
                         <label for="break2" class="form-label">Waktu Istirahat 2</label>
                         <input type="number" class="form-control" id="break2">
                       </div>
+                      <div class="mb-3">
+                        <lavel for="study3" class="form-label">Waktu Belajar 3</lavel>
+                        <input type="number" class="form-control" id="study3">
+                      </div>
                       <br>
                       <br>
                       <button class="ExecuteButton">Tekan untuk mulai belajar</button>
@@ -52,8 +56,8 @@
                       <h2 id="timer"></h2>
                 </div>
                 <div class="quote-container">
-                  <h2 id="quote"></h2>
-                  <h3 id="author"></h3>
+                  <h2 class="quote"></h2>
+                  <h3 class="author"></h3>
                 </div>
             </div>
         </div>
@@ -65,14 +69,10 @@ $(document).ready(function() {
         $('.ExecuteButton').click(function() {
           var timebelajar1 = $('#study1').val() * 60
           var timebelajar2 = $('#study2').val() * 60
+          var timebelajar3 = $('#study3').val() * 60
           var timebreak1 = $('#break1').val() * 60
           var timebreak2 = $('#break2').val() * 60
           var timer
-
-          if (!timebelajar1 || !timebelajar2 || !timebreak1 || !timebreak2) {
-            alert('Tolong lengkapi kolom yang kosong!');
-            return;
-          }
 
           $('.inputuser').fadeOut()
           $('.ucapanselamat').empty()
@@ -102,6 +102,12 @@ $(document).ready(function() {
               $('#agenda').text("Istirahat")
               menit = Math.floor(timebreak2/60)
               detik = (timebreak2--%60)
+
+              $('timer').html("<div> Waktu tersisa: " + menit + ":" + detik + "</div>")
+            } else if (timebelajar3>=0){
+              $('#agenda').text("Sesi Belajar 3")
+              menit = Math.floor(timebelajar3/60)
+              detik = (timebelajar3--%60)
               
               $('#timer').html("<div > Waktu tersisa: " + "<br>" +menit+":"+detik+" </div>")
             } else {
@@ -112,8 +118,8 @@ $(document).ready(function() {
               $('.content-container').empty();
 
       $.get(url, function(data, status){
-        $('quote').text(JSON.stringify(data.quote.message));
-        $('author').text(JSON.stringify(data.quote.author));
+        $('.quote').text(JSON.stringify(data.quote.message));
+        $('.author').text(JSON.stringify(data.quote.author));
       })
       alert('Set Belajar Selesai.');
               clearInterval(timer)
