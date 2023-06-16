@@ -19,7 +19,7 @@
             </div>
             <br><br>
             <h1 class="ucapanselamat">Selamat datang di metode belajar manual.</h1>
-            <div class="container text-center">
+            <div class="content-container text-center">
                 <div class="row inputuser">
                     <div class="col">
                       <p>Pada metode belajar ini, kamu dipersilahkan untuk membangun metode dan durasi belajar mu sendiri.</p>
@@ -50,12 +50,17 @@
                       <h2 id="agenda"></h2>
                       <br>
                       <h2 id="timer"></h2>
-
+                </div>
+                <div class="quote-container">
+                  <h2 id="quote"></h2>
+                  <h3 id="author"></h3>
                 </div>
             </div>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
+      var url="https://quote-generator-4dkkjzjz3q-et.a.run.app/quote";
 $(document).ready(function() {
         $('.ExecuteButton').click(function() {
           var timebelajar1 = $('#study1').val() * 60
@@ -64,6 +69,7 @@ $(document).ready(function() {
           var timebreak2 = $('#break2').val() * 60
           $('.inputuser').fadeOut()
           $('.ucapanselamat').text('Semangat belajarnya!!!')
+          alert('Selamat Belajar!');
           
           function thi(){
             var menit, detik
@@ -94,6 +100,16 @@ $(document).ready(function() {
             } else {
               $('#timer').fadeOut(1000)
               $('#agenda').text(" Sesi telah habis ")
+
+              //showing quote after times out
+              $('.content-container').empty();
+              $('ucapanselamat').text('');
+
+      $.get(url, function(data, status){
+        $('quote').text(JSON.stringify(data.quote.message));
+        $('author').text(JSON.stringify(data.quote.author));
+      })
+      alert('Set Belajar Selesai.');
               // $('#timer').append('<button class="ExecuteButton" id="back"></button>') ini dia langsung kembali ke
               // $('#back').click(window.location.href="Study Timer.html")               metode belajar setelah sesinya habis
             }
